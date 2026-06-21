@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reading Bridge</title>
+    <link rel="stylesheet" href="styles.css?v=20260621-1" />
+  </head>
+  <body>
+    <section class="profile-gate" id="profileGate" aria-labelledby="profileGateTitle">
+      <div class="profile-hero">
+        <p class="eyebrow">Reading Bridge</p>
+        <h1 id="profileGateTitle">Choose Your Reading Path</h1>
+        <p>Daily English practice for Peggy and Gina, with a parent view for progress and weekly setup.</p>
+      </div>
+      <div class="profile-grid" id="profileGrid"></div>
+    </section>
+
+    <div class="site-shell" id="siteShell" hidden>
+      <aside class="sidebar" aria-label="Main navigation">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">RB</span>
+          <div>
+            <strong>Reading Bridge</strong>
+            <span>G1 to G2 readiness</span>
+          </div>
+        </div>
+
+        <div class="learner-switcher" aria-label="Learner selector">
+          <p class="eyebrow">Learner</p>
+          <div class="learner-buttons" id="learnerButtons"></div>
+        </div>
+
+        <nav class="nav-list" aria-label="Website sections">
+          <button class="nav-item active" type="button" data-section="today">Today</button>
+          <button class="nav-item" type="button" data-section="weekly">Weekly Plan</button>
+          <button class="nav-item" type="button" data-section="friday">Friday Check</button>
+          <button class="nav-item" type="button" data-section="review">Spaced Review</button>
+          <button class="nav-item" type="button" data-section="skills">Skill Path</button>
+          <button class="nav-item" type="button" data-section="practice">Practice</button>
+          <button class="nav-item" type="button" data-section="exam">Exam Practice</button>
+          <button class="nav-item" type="button" data-section="materials">Learning Materials</button>
+          <button class="nav-item" type="button" data-section="parent">Parent Review</button>
+        </nav>
+
+        <section class="sidebar-panel" aria-labelledby="routineTitle">
+          <p class="eyebrow" id="routineTitle">Daily rhythm</p>
+          <strong>15 minutes of literacy centers</strong>
+          <span>Then 10-15 minutes of Epic reading connected to the weekly skill.</span>
+        </section>
+        <button class="secondary-action back-profile-button" id="backToProfilesButton" type="button">
+          Switch user
+        </button>
+      </aside>
+
+      <main class="main-area">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow" id="roleEyebrow">American curriculum spine</p>
+            <h1 id="pageTitle">Today&apos;s Literacy Mission</h1>
+          </div>
+          <div class="top-actions">
+            <div class="current-date" id="currentDate" aria-label="Current date">
+              <span class="date-label">Today</span>
+              <span class="date-value">Friday, June 5</span>
+            </div>
+            <button class="secondary-action child-switch-button" id="childSwitchButton" type="button">Switch</button>
+          </div>
+        </header>
+
+        <section class="hero-band" id="heroBand">
+          <div>
+            <p class="eyebrow">Current target</p>
+            <h2 id="heroTitle">Build G1 foundations toward G2 entrance readiness</h2>
+            <p id="heroText">
+              Practice follows American early literacy: decoding, sight words, fluency, vocabulary,
+              comprehension, speaking, and writing. School weekly words are mastered by Friday and
+              reviewed again over time.
+            </p>
+          </div>
+          <div class="hero-stats" aria-label="Learner progress summary">
+            <span><strong id="todayStars">0</strong> stars today</span>
+            <span><strong id="heartCount">0</strong> hearts</span>
+            <span><strong id="masteredCount">0</strong> words mastered</span>
+            <span><strong id="reviewDueCount">0</strong> reviews due</span>
+          </div>
+        </section>
+
+        <section class="section-view active" id="section-today" aria-labelledby="todayTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">This week and today</p>
+              <h2 id="todayTitle">Learning plan and 15-minute practice</h2>
+            </div>
+            <span class="status-pill" id="missionStatus">Ready</span>
+          </div>
+          <div class="child-weekly-plan" id="childWeeklyPlan"></div>
+          <div class="mission-grid mission-path" id="missionGrid"></div>
+          <div class="practice-detail-panel" id="practiceDetailPanel" hidden></div>
+          <section class="wide-panel epic-panel" aria-labelledby="epicTitle">
+            <div>
+              <p class="eyebrow">Epic reading extension</p>
+              <h2 id="epicTitle">10-15 minute reading recommendation</h2>
+              <div id="epicRecommendation"></div>
+            </div>
+            <form class="inline-form" id="epicForm">
+              <label>
+                Book read today
+                <input id="epicBookInput" type="text" placeholder="Type the Epic book title" />
+              </label>
+              <label>
+                One thing I learned
+                <input id="epicNoteInput" type="text" placeholder="Write or dictate a short idea" />
+              </label>
+              <button class="primary-action" type="submit">Log reading</button>
+            </form>
+          </section>
+        </section>
+
+        <section class="section-view" id="section-weekly" aria-labelledby="weeklyTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">School weekly planner</p>
+              <h2 id="weeklyTitle">Current weekly plan</h2>
+              <p class="current-week-label" id="currentWeekLabel"></p>
+            </div>
+            <button class="secondary-action" id="resetWeeklyButton" type="button">Restore sample</button>
+          </div>
+          <form class="planner-grid" id="weeklyForm">
+            <label>
+              Reading title
+              <input id="readingTitleInput" type="text" />
+            </label>
+            <label>
+              Phonics and word work
+              <input id="phonicsFocusInput" type="text" />
+            </label>
+            <label>
+              Grammar focus
+              <input id="grammarFocusInput" type="text" />
+            </label>
+            <label>
+              UOI / topic
+              <input id="uoiTopicInput" type="text" />
+            </label>
+            <label class="span-2">
+              Friday mastery words
+              <textarea id="masteryWordsInput" rows="4"></textarea>
+            </label>
+            <label class="span-2">
+              Sight words / irregular words
+              <textarea id="sightWordsInput" rows="3"></textarea>
+            </label>
+            <label class="span-2">
+              Epic topics or book ideas
+              <textarea id="epicIdeasInput" rows="3"></textarea>
+            </label>
+            <div class="weekly-edit-actions span-2">
+              <button class="secondary-action" id="editWeeklyButton" type="button">Edit</button>
+              <button class="primary-action" id="saveWeeklyButton" type="submit" disabled>Save</button>
+            </div>
+            <p class="material-status span-2" id="weeklyEditStatus"></p>
+          </form>
+        </section>
+
+        <section class="section-view" id="section-friday" aria-labelledby="fridayTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Friday word check</p>
+              <h2 id="fridayTitle">Master this week&apos;s words</h2>
+            </div>
+            <button class="secondary-action" id="startFridayButton" type="button">Start check</button>
+          </div>
+          <div class="word-check-grid" id="fridayWordGrid"></div>
+        </section>
+
+        <section class="section-view" id="section-review" aria-labelledby="reviewTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Spaced review</p>
+              <h2 id="reviewTitle">Review again and again</h2>
+            </div>
+            <button class="secondary-action" id="markReviewsDoneButton" type="button">Mark due words reviewed</button>
+          </div>
+          <div class="review-list" id="reviewList"></div>
+        </section>
+
+        <section class="section-view" id="section-skills" aria-labelledby="skillsTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Skill path</p>
+              <h2 id="skillsTitle">American curriculum progression</h2>
+            </div>
+          </div>
+          <div class="skill-columns" id="skillColumns"></div>
+        </section>
+
+        <section class="section-view" id="section-practice" aria-labelledby="practiceTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Literacy centers</p>
+              <h2 id="practiceTitle">Practice by skill</h2>
+            </div>
+            <select id="practiceDomainSelect" aria-label="Practice domain"></select>
+          </div>
+          <div class="practice-board" id="practiceBoard"></div>
+        </section>
+
+        <section class="section-view" id="section-exam" aria-labelledby="examTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Original exam-style practice</p>
+              <h2 id="examTitle">G2 readiness check</h2>
+            </div>
+            <button class="secondary-action" id="scoreExamButton" type="button">Score sample</button>
+          </div>
+          <div class="exam-grid" id="examGrid"></div>
+        </section>
+
+        <section class="section-view" id="section-parent" aria-labelledby="parentTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Parent review</p>
+              <h2 id="parentTitle">Progress and next focus</h2>
+            </div>
+            <button class="secondary-action" id="clearProgressButton" type="button">Clear current learner progress</button>
+          </div>
+          <div class="parent-grid" id="parentGrid"></div>
+        </section>
+
+        <section class="section-view" id="section-materials" aria-labelledby="materialsTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Local materials</p>
+              <h2 id="materialsTitle">Learning Materials</h2>
+            </div>
+            <button class="secondary-action" id="refreshMaterialsButton" type="button">Refresh</button>
+          </div>
+          <div class="materials-grid" id="materialsGrid"></div>
+        </section>
+
+        <section class="practice-route-view" id="practiceRouteView" hidden></section>
+      </main>
+    </div>
+
+    <div class="auth-modal" id="parentAuthModal" role="dialog" aria-modal="true" aria-labelledby="parentAuthTitle" hidden>
+      <form class="auth-card" id="parentAuthForm">
+        <p class="eyebrow" id="authEyebrow" hidden></p>
+        <h2 class="sr-only" id="parentAuthTitle">Unlock</h2>
+        <p id="authIntro" hidden></p>
+        <label class="auth-password-label">
+          <span class="sr-only" id="authPasswordLabelText">Password</span>
+          <input id="parentPasswordInput" type="password" autocomplete="current-password" placeholder="" />
+        </label>
+        <p class="auth-message" id="parentAuthMessage"></p>
+        <div class="popover-actions">
+          <button class="primary-action" id="authSubmitButton" type="submit">Unlock</button>
+          <button class="secondary-action" id="cancelParentAuthButton" type="button">Cancel</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="word-popover" id="wordPopover" role="dialog" aria-live="polite" aria-label="Word" hidden>
+      <button class="icon-button close-popover" id="closePopoverButton" type="button" aria-label="Close word help">x</button>
+      <p class="eyebrow">Word</p>
+      <h2 id="popoverWord">word</h2>
+      <button class="word-audio-button" id="speakWordButton" type="button" aria-label="Hear word">▶</button>
+      <p id="popoverDefinition"></p>
+      <p class="example-text" id="popoverExample"></p>
+    </div>
+
+    <script src="raz-reading-library.js?v=20260621-2"></script>
+    <script type="module" src="firebase-sync.js?v=20260613-3"></script>
+    <script src="app.js?v=20260621-6"></script>
+  </body>
+</html>
